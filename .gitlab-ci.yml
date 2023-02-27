@@ -1,0 +1,8 @@
+compile:
+  stage: build
+  image: daesters/latex
+  script:
+    - latexmk -pdf
+  artifacts:
+    paths:
+      - ./main.pdf

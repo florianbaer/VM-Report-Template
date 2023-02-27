@@ -1,0 +1,22 @@
+name: Build PDF File
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Git repository
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: build LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "main.tex"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -output-directory=out"
+          glob_root_file: true
+          latexmk_shell_escape: true
+      - name: Upload main
+        uses: actions/upload-artifact@master
+        with:
+          name: Thesis.pdf
+          path: out/main.pdf
