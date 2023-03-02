@@ -2,12 +2,20 @@ name: Build PDF File
 on: [push, pull_request]
 jobs:
   build:
+    env:
+      build: github
     runs-on: ubuntu-latest
     steps:
       - name: Clone Git repository
         uses: actions/checkout@v3
         with:
           ref: main
+      - name: Set out directory for minted
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "\usepackage{minted}"
+          replace: "\usepackage[outputdir=out]{minted}"
+          regex: false
       - name: build LaTeX
         uses: xu-cheng/latex-action@v2
         with:
