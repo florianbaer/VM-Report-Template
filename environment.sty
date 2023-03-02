@@ -6,3 +6,30 @@
 \newcommand{\expertname}{\textbf{\textcolor{red}{CO-ADVISOR NAME}}}
 \newcommand{\titlename}{\textbf{\textcolor{red}{Master of Science in Engineering}}}
 \newcommand{\schoolname}{\textbf{\textcolor{red}{Hochschule Luzern, Departement Informatik}}}
+
+
+\setacronymstyle{long-short}
+
+% Neue Referenzbefehle
+\newcommand{\figref}[1]{{\textit{Figure \ref{#1}}}}
+\newcommand{\secref}[1]{{\textit{Section \ref{#1}}}}
+\newcommand{\tblref}[1]{{\textit{Table \ref{#1}}}}
+\newcommand{\apref}[1]{{\textit{Appendix \ref{#1}}}}
+\newcommand{\formref}[1]{{\textit{Formula \ref{#1}}}}
+
+% Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
+\renewcommand{\arraystretch}{1.5}
+
+
+\setlength{\headheight}{13.6pt}
+
+% Header/Footer Einstellung
+\pagestyle{fancy}
+\fancyhf{}
+% set horizontal line = 0
+\renewcommand{\headrulewidth}{0pt}
+\rhead{\authorname}
+\lhead{\thesisname}
+\cfoot{\thepage}
+
+\setcounter{tocdepth}{2}

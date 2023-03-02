@@ -1,4 +1,4 @@
-\documentclass[10.5pt]{article}
+\documentclass[11pt]{article}
 % compile with pdflatex deckball_bachelorarbeit.tex
 % eingesetzte packages
 % PDF/A Compliance
@@ -13,9 +13,13 @@
             left=2.35cm,right=2.12cm,top=3.75cm,bottom=2.88cm,%
             footskip=.25in]{geometry}
 \usepackage[T1]{fontenc}
-% erlaubt tabllen über mehrere seiten
+
+% code
+\usepackage[outputdir=out]{minted}
+
+% tables over multiple pages
 \usepackage{longtable}
-% einbinden von bildern
+% use images
 \usepackage{graphicx}
 \usepackage{nameref}
 \usepackage{caption}
@@ -30,7 +34,6 @@
 \usepackage{pdflscape}
 % Abkürzungsverzeichnis
 \usepackage[acronym]{glossaries}
-\setacronymstyle{long-short}
 %\makeglossaries
 \input{include/glossary}
 % Einbindung von Code
@@ -42,35 +45,11 @@
 % Single-page landscape
 \usepackage{lscape}
 
-
 \usepackage{caption}
 \usepackage{subcaption}
 
 \input{environment.sty}
 
-\newcommand{\code}[1]{\texttt{#1}}
-
-% Neue Referenzbefehle
-\newcommand{\figref}[1]{{\textit{Figure \ref{#1}}}}
-\newcommand{\secref}[1]{{\textit{Section \ref{#1}}}}
-\newcommand{\tblref}[1]{{\textit{Table \ref{#1}}}}
-\newcommand{\apref}[1]{{\textit{Appendix \ref{#1}}}}
-\newcommand{\formref}[1]{{\textit{Formula \ref{#1}}}}
-
-% Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
-\renewcommand{\arraystretch}{1.5}
-
-% Header/Footer Einstellung
-\pagestyle{fancy}
-\fancyhf{}
-% set horizontal line = 0
-\renewcommand{\headrulewidth}{0pt}
-\rhead{\authorname}
-\lhead{\thesisname}
-\cfoot{\thepage}
-
-
-\setcounter{tocdepth}{2}
 
 \begin{document}
 \include{include/00_cover}
