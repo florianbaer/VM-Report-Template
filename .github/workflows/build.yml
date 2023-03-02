@@ -13,8 +13,8 @@ jobs:
       - name: Set out directory for minted
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "\usepackage{minted}"
-          replace: "\usepackage[outputdir=out]{minted}"
+          find: "usepackage{minted}"
+          replace: "usepackage[outputdir=out]{minted}"
           regex: false
       - name: build LaTeX
         uses: xu-cheng/latex-action@v2
