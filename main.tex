@@ -1,14 +1,103 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[10.5pt]{article}
+% compile with pdflatex deckball_bachelorarbeit.tex
+% eingesetzte packages
+% PDF/A Compliance
+\usepackage[a-2b,latxmp]{pdfx}
+% add unicode support and use german as language
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage{hyperref}
+\usepackage{amssymb} 
+\usepackage{color}
+\usepackage[a4paper,bindingoffset=0.2in,%
+            left=2.35cm,right=2.12cm,top=3.75cm,bottom=2.88cm,%
+            footskip=.25in]{geometry}
+\usepackage[T1]{fontenc}
+% erlaubt tabllen über mehrere seiten
+\usepackage{longtable}
+% einbinden von bildern
+\usepackage{graphicx}
+\usepackage{nameref}
+\usepackage{caption}
+\usepackage{float}
+% itemize innerhalb tabelle
+\usepackage{array}
+% style von headern und footern
+\usepackage{fancyhdr}
+% Für PDF Einbindung
+\usepackage{pdfpages}
+% Seitenorientierung
+\usepackage{pdflscape}
+% Abkürzungsverzeichnis
+\usepackage[acronym]{glossaries}
+\setacronymstyle{long-short}
+%\makeglossaries
+\input{include/glossary}
+% Einbindung von Code
+\usepackage{listings}
+% Mehrere Reihen in einer Tabelle
+\usepackage{multirow}
+% Verwendung für Literaturverzeichnis
+\usepackage{apacite}
+% Single-page landscape
+\usepackage{lscape}
 
-\title{VM-Report-Template}
-\author{Florian Bär}
-\date{February 2023}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\input{environment.sty}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Neue Referenzbefehle
+\newcommand{\figref}[1]{{\textit{Figure \ref{#1}}}}
+\newcommand{\secref}[1]{{\textit{Section \ref{#1}}}}
+\newcommand{\tblref}[1]{{\textit{Table \ref{#1}}}}
+\newcommand{\apref}[1]{{\textit{Appendix \ref{#1}}}}
+\newcommand{\formref}[1]{{\textit{Formula \ref{#1}}}}
+
+% Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
+\renewcommand{\arraystretch}{1.5}
+
+% Header/Footer Einstellung
+\pagestyle{fancy}
+\fancyhf{}
+% set horizontal line = 0
+\renewcommand{\headrulewidth}{0pt}
+\rhead{\authorname}
+\lhead{\thesisname}
+\cfoot{\thepage}
+
+
+\setcounter{tocdepth}{2}
 
 \begin{document}
+\include{include/00_cover}
+\clearpage
+\include{include/01_abstract}
+\clearpage
+\tableofcontents
+\clearpage
+\listoffigures
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+\include{include/02_introduction}
+\clearpage
+\include{include/03_methods}
+\clearpage
+\include{include/04_results}
+\clearpage
+\include{include/05_discussion}
+\clearpage
+\pagenumbering{gobble}
+\include{include/06_appendix}
+\clearpage
 
-\maketitle
-
-\section{Introduction}
+\bibliographystyle{apacite}
+\bibliography{Bibliography}
 
 \end{document}
+
+

@@ -1,2 +1,4 @@
 # VM report template
-Template for the report used for a master work or thesis. 
+https://github.com/florianbaer/VM-Report-Template/actions/workflows/build.yml/badge.svg
+
+This template is a base for the report while working  for a master work or thesis. 
