@@ -1,6 +1,6 @@
 compile:
   stage: build
-  image: daesters/latex
+  image: texlive/texlive
   script:
     - latexmk -shell-escape -pdf
   artifacts:
