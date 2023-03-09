@@ -2,7 +2,7 @@ compile:
   stage: build
   image: daesters/latex
   script:
-    - latexmk -pdf
+    - latexmk -shell-escape -pdf
   artifacts:
     paths:
       - ./main.pdf
