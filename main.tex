@@ -1,21 +1,28 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 % compile with pdflatex deckball_bachelorarbeit.tex
 % eingesetzte packages
 % PDF/A Compliance
 \usepackage[a-2b,latxmp]{pdfx}
-% add unicode support and use german as language
+% add unicode support and use english as language
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 %\usepackage{hyperref}
 \usepackage{amssymb} 
 \usepackage{color}
 \usepackage[a4paper,bindingoffset=0.2in,%
-            left=2.35cm,right=2.12cm,top=3.75cm,bottom=2.88cm,%
+            left=2.35cm,right=2.12cm,top=2.75cm,bottom=2.2cm,%
             footskip=.25in]{geometry}
 \usepackage[T1]{fontenc}
-
 % code
 \usepackage{minted}
+
+% set spacing for before and after chapters
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 % tables over multiple pages
 \usepackage{longtable}
@@ -44,6 +51,18 @@
 \usepackage{apacite}
 % Single-page landscape
 \usepackage{lscape}
+% Algorithms
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% List of equations
+\usepackage{amsmath}
+\usepackage{tocloft}
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\setlength{\cftmyequationsnumwidth}{2.3em}
+\setlength{\cftmyequationsindent}{1.5em}
 
 \usepackage{caption}
 \usepackage{subcaption}
@@ -54,27 +73,37 @@
 \begin{document}
 \input{include/00_cover}
 \clearpage
+\pagenumbering{Roman}
 \input{include/01_abstract}
 \clearpage
 \tableofcontents
 \clearpage
-\listoffigures
-\listoftables
-\clearpage
 \pagenumbering{arabic}
 \input{include/02_introduction}
 \clearpage
-\input{include/03_methods}
+\input{include/03_theoretical_grounding}
 \clearpage
-\input{include/04_results}
+\input{include/04_methodology}
 \clearpage
-\input{include/05_discussion}
+\input{include/05_results}
 \clearpage
-\pagenumbering{gobble}
-\input{include/06_appendix}
+\input{include/06_discussion}
+\clearpage
+\input{include/07_appendix}
+\clearpage
+\printglossary[type=\acronymtype, title=List of Abbreviations]
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\listofalgorithms
+\clearpage
+\listofmyequations
 \clearpage
 
 \bibliographystyle{apacite}
+\renewcommand\bibname{Bibliography}
 \bibliography{Bibliography}
 
 \end{document}

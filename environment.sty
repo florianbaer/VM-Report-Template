@@ -1,25 +1,18 @@
-\newcommand{\authorname}{\textbf{\textcolor{red}{YOUR NAME}}}
+\newcommand{\authorname}{\textcolor{red}{\textsc{Your Name}}}
 \newcommand{\thesisname}{\textbf{\textcolor{red}{THESIS NAME}}}
-\newcommand{\kindofthesis}{\textbf{\textcolor{red}{Specialization project 1}}}
-\newcommand{\advisorname}{\textbf{\textcolor{red}{ADVISOR NAME}}}
-\newcommand{\coadvisorname}{\textbf{\textcolor{red}{CO-ADVISOR NAME}}}
-\newcommand{\expertname}{\textbf{\textcolor{red}{CO-ADVISOR NAME}}}
-\newcommand{\titlename}{\textbf{\textcolor{red}{Master of Science in Engineering}}}
-\newcommand{\schoolname}{\textbf{\textcolor{red}{Hochschule Luzern, Departement Informatik}}}
-
+\newcommand{\kindofthesis}{\textcolor{red}{Kind of project}}
+\newcommand{\advisorname}{\textcolor{red}{ADVISOR NAME}}
+\newcommand{\coadvisorname}{\textcolor{red}{CO-ADVISOR NAME}}
+\newcommand{\expertname}{\textcolor{red}{CO-ADVISOR NAME}}
+\newcommand{\titlename}{\textcolor{red}{Master of Science in Engineering}}
+\newcommand{\presented}{presented by}
+\newcommand{\schoolname}{\textcolor{red}{Lucerne School of Computer Science and Information Technology\\
+Lucerne University of Applied Sciences and Arts\\
+6343 Rotkreuz, Switzerland}}
 
 \setacronymstyle{long-short}
-
-% Neue Referenzbefehle
-\newcommand{\figref}[1]{{\textit{Figure \ref{#1}}}}
-\newcommand{\secref}[1]{{\textit{Section \ref{#1}}}}
-\newcommand{\tblref}[1]{{\textit{Table \ref{#1}}}}
-\newcommand{\apref}[1]{{\textit{Appendix \ref{#1}}}}
-\newcommand{\formref}[1]{{\textit{Formula \ref{#1}}}}
-
 % Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
 \renewcommand{\arraystretch}{1.5}
-
 
 \setlength{\headheight}{13.6pt}
 
@@ -28,8 +21,7 @@
 \fancyhf{}
 % set horizontal line = 0
 \renewcommand{\headrulewidth}{0pt}
-\rhead{\authorname}
-\lhead{\thesisname}
+\fancyhead[C]{\small\leftmark}
 \cfoot{\thepage}
 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
