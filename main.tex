@@ -6,7 +6,7 @@
 % add unicode support and use english as language
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-%\usepackage{hyperref}
+
 \usepackage{amssymb} 
 \usepackage{color}
 \usepackage[a4paper,bindingoffset=0.2in,%
@@ -31,11 +31,13 @@
 \usepackage{nameref}
 \usepackage{caption}
 \usepackage{float}
-% itemize innerhalb tabelle
+\usepackage{hyperref}
+
+% itemize in table
 \usepackage{array}
-% style von headern und footern
+% style of header and footer
 \usepackage{fancyhdr}
-% Für PDF Einbindung
+% Include pdf pages
 \usepackage{pdfpages}
 % Seitenorientierung
 \usepackage{pdflscape}
@@ -45,10 +47,18 @@
 \input{include/glossary}
 % Einbindung von Code
 \usepackage{listings}
-% Mehrere Reihen in einer Tabelle
+% multiple rows in a table
 \usepackage{multirow}
-% Verwendung für Literaturverzeichnis
-\usepackage{apacite}
+% Literaty index
+\usepackage{csquotes}% Recommended
+\usepackage[
+style=apa,
+backend=biber,
+hyperref=true,
+citereset=chapter,
+maxcitenames=3
+]{biblatex}
+\addbibresource{bibliography.bib}
 % Single-page landscape
 \usepackage{lscape}
 % Algorithms
@@ -91,6 +101,8 @@
 \clearpage
 \input{include/07_appendix}
 \clearpage
+\printglossary
+\clearpage
 \printglossary[type=\acronymtype, title=List of Abbreviations]
 \clearpage
 \listoffigures
@@ -102,9 +114,7 @@
 \listofmyequations
 \clearpage
 
-\bibliographystyle{apacite}
-\renewcommand\bibname{Bibliography}
-\bibliography{Bibliography}
+\printbibliography
 
 \end{document}
 
