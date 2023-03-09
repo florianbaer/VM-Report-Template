@@ -4,5 +4,5 @@ compile:
   script:
     - latexmk -shell-escape -pdf
   artifacts:
-    paths:
-      - ./main.pdf
+    expose_as: 'Thesis'
+    paths: ['main.pdf']
