@@ -32,6 +32,9 @@ RUN git config --global user.name "Dev Container User" \
 # System version is adequate, skip upgrade to avoid conflicts
 RUN which pygmentize || pip3 install pygments --break-system-packages
 
+# Add TeX Live binaries to PATH
+ENV PATH="/usr/local/texlive/2025/bin/aarch64-linux:${PATH}"
+
 # Install additional TeX Live packages needed for thesis template
 RUN tlmgr update --self
 

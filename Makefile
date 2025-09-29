@@ -31,19 +31,19 @@ build: $(FINAL_PDF) ## Build the PDF using latexmk
 $(FINAL_PDF): $(MAIN_TEX) config.tex $(shell find include/ -name "*.tex" 2>/dev/null) bibliography.bib
 	@echo "$(GREEN)Building thesis PDF...$(NC)"
 	@mkdir -p $(OUTPUT_DIR)
-	$(LATEXMK) -pdf -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
+	$(LATEXMK) -pdf -pv- -pvc- -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
 	@echo "$(GREEN)✅ Build complete: $(FINAL_PDF)$(NC)"
 
 quick: ## Quick build without bibliography
 	@echo "$(YELLOW)Quick build (no bibliography)...$(NC)"
 	@mkdir -p $(OUTPUT_DIR)
-	$(PDFLATEX) -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
-	@echo "$(GREEN)✅ Quick build complete$(NC)"
+	$(PDFLATEX) -jobname=$(basename $(PDF_NAME)) -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
+	@echo "$(GREEN)✅ Quick build complete: $(FINAL_PDF)$(NC)"
 
 watch: ## Watch files and rebuild automatically on changes
 	@echo "$(GREEN)Watching files for changes...$(NC)"
 	@echo "$(YELLOW)Press Ctrl+C to stop$(NC)"
-	$(LATEXMK) -pdf -pvc -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
+	$(LATEXMK) -pdf -pvc -view=pdf -output-directory=$(OUTPUT_DIR) -interaction=nonstopmode $(MAIN_TEX)
 
 ## Configuration and setup
 

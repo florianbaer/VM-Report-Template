@@ -17,6 +17,7 @@
 				"streetsidesoftware.code-spell-checker"
 			],
 			"settings": {
+				"latex-workshop.latex.outDir": "build",
 				"latex-workshop.latex.autoClean.run": "onBuilt",
 				"latex-workshop.latex.clean.method": "glob",
 				"latex-workshop.latex.autoBuild.run": "onSave",
@@ -40,50 +41,57 @@
 				"latex-workshop.latex.rootFile.useSubFile": true,
 				"latex-workshop.view.pdf.zoom": "page-fit",
 				"latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e1e",
-				"latex-workshop.latex.recipe.default": "latexmk",
+				"latex-workshop.latex.recipe.default": "latexmk (thesis.pdf)",
 				"latex-workshop.docker.enabled": false,
 				"latex-workshop.latex.recipes": [
 					{
-						"name": "latexmk",
+						"name": "latexmk (thesis.pdf)",
 						"tools": [
-							"latexmk"
+							"latexmk-thesis"
 						]
 					},
 					{
 						"name": "pdflatex_biber",
 						"tools": [
-							"pdflatex",
+							"pdflatex-thesis",
 							"biber",
-							"pdflatex",
-							"pdflatex"
+							"pdflatex-thesis",
+							"pdflatex-thesis"
 						]
 					},
 					{
-						"name": "pdflatex",
+						"name": "pdflatex (thesis.pdf)",
 						"tools": [
-							"pdflatex"
+							"pdflatex-thesis"
 						]
 					}
 				],
 				"latex-workshop.latex.tools": [
 					{
-						"name": "latexmk",
+						"name": "latexmk-thesis",
 						"command": "latexmk",
 						"args": [
-							"-pdf",
-							"-interaction=nonstopmode",
 							"-synctex=1",
+							"-interaction=nonstopmode",
+							"-file-line-error",
+							"-pdf",
+							"-shell-escape",
+							"-output-directory=build",
+							"-jobname=thesis",
 							"%DOC%"
-						]
+						],
+						"env": {}
 					},
 					{
-						"name": "pdflatex",
+						"name": "pdflatex-thesis",
 						"command": "pdflatex",
 						"args": [
 							"-synctex=1",
 							"-interaction=nonstopmode",
 							"-file-line-error",
 							"-shell-escape",
+							"-output-directory=build",
+							"-jobname=thesis",
 							"%DOC%"
 						]
 					},
@@ -121,7 +129,8 @@
 					"*.bcf",
 					"*.run.xml"
 				],
-				"latex-workshop.texcount.autorun": "onSave"
+				"latex-workshop.texcount.autorun": "onSave",
+				"latex-workshop.view.pdf.useBuildDir": true
 			}
 		}
 	},
@@ -129,8 +138,7 @@
 		{
 			"source": "${localEnv:HOME}${localEnv:USERPROFILE}/.ssh",
 			"target": "/home/vscode/.ssh",
-			"type": "bind",
-			"consistency": "cached"
+			"type": "bind"
 		}
 	],
 	"containerEnv": {

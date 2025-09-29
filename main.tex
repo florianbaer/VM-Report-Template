@@ -87,9 +87,9 @@
 % Hyperlinks (load near end to avoid conflicts)
 \usepackage[
   colorlinks=true,
-  linkcolor=blue,
-  urlcolor=blue,
-  citecolor=blue,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
   pdfpagemode=UseOutlines,
   bookmarksopen=true,
   bookmarksnumbered=true
@@ -98,8 +98,11 @@
 
 % Load configuration and custom styling
 \input{config.tex}
-\usepackage{styles/thesis-style}
-\input{environment.sty}
+\makeatletter
+\def\input@path{{}{styles/}}
+\makeatother
+\usepackage{thesis-style}
+\usepackage{environment}
 
 
 \begin{document}

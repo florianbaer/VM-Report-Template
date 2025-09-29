@@ -6,6 +6,9 @@ $pdf_mode = 1;
 $dvi_mode = 0;
 $postscript_mode = 0;
 
+# Set jobname so the generated PDF is thesis.pdf
+$jobname = 'thesis';
+
 # Use biber for bibliography processing
 $biber = 'biber %O %S';
 $bibtex_use = 2;
@@ -19,16 +22,12 @@ $clean_ext = 'auxlock figlist makefile fls log fdb_latexmk out toc nav snm vrb b
 # Output directory
 $out_dir = 'build';
 
-# Automatically run latexmk when files change (for continuous preview)
-$preview_continuous_mode = 1;
+# Automatically run latexmk when files change (disabled by default, enabled via -pvc)
+$preview_continuous_mode = 0;
 
-# PDF viewer settings
-$pdf_previewer = 'start';  # Windows
-if ($^O eq 'darwin') {     # macOS
-    $pdf_previewer = 'open %O %S';
-} elsif ($^O eq 'linux') { # Linux
-    $pdf_previewer = 'xdg-open %O %S';
-}
+# PDF viewer settings (disabled by default to prevent blocking builds)
+$pdf_previewer = 'none';
+
 
 # Maximum number of compilation runs
 $max_repeat = 5;

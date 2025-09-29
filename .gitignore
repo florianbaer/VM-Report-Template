@@ -1,4 +1,5 @@
 # LaTeX auxiliary files
+build/
 *.aux
 *.bbl
 *.bcf

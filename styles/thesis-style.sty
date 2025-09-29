@@ -49,24 +49,24 @@
 
 % Code listing style
 \lstdefinestyle{thesis-code}{
-    backgroundcolor=\color{gray!10},
-    commentstyle=\color{thesisgreen},
-    keywordstyle=\color{thesisblue},
-    numberstyle=\tiny\color{thesisgray},
-    stringstyle=\color{red},
-    basicstyle=\footnotesize\ttfamily,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    frame=single,
-    rulecolor=\color{black!30}
+	backgroundcolor=\color{gray!10},
+	commentstyle=\color{thesisgreen},
+	keywordstyle=\color{thesisblue},
+	numberstyle=\tiny\color{thesisgray},
+	stringstyle=\color{red},
+	basicstyle=\footnotesize\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	frame=single,
+	rulecolor=\color{black!30}
 }
 
 % Set default code style
@@ -74,12 +74,13 @@
 
 % Minted style configuration
 \setminted{
-    bgcolor=gray!10,
-    frame=single,
-    framesep=2mm,
-    baselinestretch=1.2,
-    fontsize=\footnotesize,
-    linenos=true
+	bgcolor=gray!10,
+	frame=single,
+	framesep=2mm,
+	baselinestretch=1.2,
+	fontsize=\footnotesize,
+	linenos=true,
+	style=colorful
 }
 
 % Custom commands for consistent formatting
@@ -90,26 +91,26 @@
 
 % Figure and table caption formatting
 \captionsetup{
-    font=small,
-    labelfont=bf,
-    format=hang,
-    indention=0pt
+	font=small,
+	labelfont=bf,
+	format=hang,
+	indention=0pt
 }
 
 % Custom section formatting
-\titleformat{\section}
-  {\normalfont\Large\bfseries\color{thesisblue}}
-  {\thesection}{1em}{}
+itleformat{\section}
+	{\normalfont\Large\bfseries}
+	{\thesection}{1em}{}
 
-\titleformat{\subsection}
-  {\normalfont\large\bfseries\color{thesisblue}}
-  {\thesubsection}{1em}{}
+itleformat{\subsection}
+	{\normalfont\large\bfseries}
+	{\thesubsection}{1em}{}
 
 % Enhanced quote environment
 \renewenvironment{quote}
-  {\list{}{\rightmargin\leftmargin\small}%
-   \item\relax\color{thesisgray}\itshape}
-  {\endlist}
+{\list{}{\rightmargin\leftmargin\small}%
+	\item\relax\color{thesisgray}\itshape}
+{\endlist}
 
 % URL style
 \urlstyle{same}
