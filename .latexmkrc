@@ -6,8 +6,8 @@ $pdf_mode = 1;
 $dvi_mode = 0;
 $postscript_mode = 0;
 
-# Set jobname so the generated PDF is thesis.pdf
-$jobname = 'thesis';
+# Use default jobname (main.tex -> main.pdf)
+undef $jobname;
 
 # Use biber for bibliography processing
 $biber = 'biber %O %S';

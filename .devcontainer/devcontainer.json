@@ -26,6 +26,7 @@
 				"latex-workshop.formatting.latex": "latexindent",
 				"latex-workshop.linting.chktex.enabled": true,
 				"latex-workshop.view.pdf.viewer": "tab",
+				"latex-workshop.latex.outDir": "./build",
 				"files.associations": {
 					"*.tex": "latex"
 				},
@@ -41,13 +42,13 @@
 				"latex-workshop.latex.rootFile.useSubFile": true,
 				"latex-workshop.view.pdf.zoom": "page-fit",
 				"latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e1e",
-				"latex-workshop.latex.recipe.default": "latexmk (thesis.pdf)",
+				"latex-workshop.latex.recipe.default": "latexmk",
 				"latex-workshop.docker.enabled": false,
 				"latex-workshop.latex.recipes": [
 					{
-						"name": "latexmk (thesis.pdf)",
+						"name": "latexmk",
 						"tools": [
-							"latexmk-thesis"
+							"latexmk"
 						]
 					},
 					{
@@ -68,7 +69,7 @@
 				],
 				"latex-workshop.latex.tools": [
 					{
-						"name": "latexmk-thesis",
+						"name": "latexmk",
 						"command": "latexmk",
 						"args": [
 							"-synctex=1",
@@ -77,13 +78,12 @@
 							"-pdf",
 							"-shell-escape",
 							"-output-directory=build",
-							"-jobname=thesis",
 							"%DOC%"
 						],
 						"env": {}
 					},
 					{
-						"name": "pdflatex-thesis",
+						"name": "pdflatex",
 						"command": "pdflatex",
 						"args": [
 							"-synctex=1",
@@ -91,7 +91,6 @@
 							"-file-line-error",
 							"-shell-escape",
 							"-output-directory=build",
-							"-jobname=thesis",
 							"%DOC%"
 						]
 					},
