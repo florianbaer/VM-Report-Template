@@ -4,8 +4,8 @@
 % Modern LaTeX packages and configuration
 % ========================================
 
-% PDF/A Compliance
-\usepackage[a-2b,latxmp]{pdfx}
+% PDF/A Compliance (temporarily disabled due to missing dependencies)
+% \usepackage[a-2b,latxmp]{pdfx}
 
 % Modern font handling and encoding
 \usepackage[T1]{fontenc}
@@ -13,12 +13,12 @@
 \usepackage{microtype}        % Improved typography and spacing
 
 % Language support
-\usepackage[english]{babel} 
+\usepackage[english]{babel}
 
 % Modern color package (replaces color)
 \usepackage{xcolor}
 
-% Math packages 
+% Math packages
 \usepackage{amsmath,amssymb,amsthm}
 % Page layout
 \usepackage[a4paper,bindingoffset=0.2in,%
@@ -66,9 +66,7 @@
   citereset=chapter,
   maxcitenames=3,
   sorting=nyt,
-  isbn=false,
-  url=true,
-  doi=true
+  isbn=false
 ]{biblatex}
 \addbibresource{bibliography.bib}
 % Algorithms

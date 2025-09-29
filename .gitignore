@@ -1,0 +1,391 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+*.alg
+*.loa
+*.nav
+*.snm
+*.vrb
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.ist
+*.fdb_latexmk
+*.figlist
+*.makefile
+*.xwm
+*.upa
+*.upb
+*.pytxcode
+*.run.xml
+
+# LaTeX Beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+# LaTeX TikZ & PGF
+*.figlist
+*.makefile
+*.xwm
+
+# Minted (code highlighting)
+_minted*
+*.pyg
+
+# BibTeX
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# xindy
+*.xdy
+
+# WinEdt
+*.bak
+*.sav
+
+# Texpad
+.texpadtmp
+
+# Kile
+*.backup
+
+# gummi
+.*.swp
+
+# KBibTeX
+*~[0-9]*
+
+# TeXnicCenter
+*.tps
+
+# auto folder when using emacs and auctex
+/auto/*
+*.el
+
+# expex forward references with \gathertags
+*-tags.tex
+
+# glossaries
+*.glstex
+
+# gnuplottex
+*-gnuplottex-*
+
+# gregoriotex
+*.gaux
+*.gtex
+
+# htlatex
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
+
+# hyperref
+*.brf
+
+# knitr
+*-concordance.tex
+
+# listings
+*.lol
+
+# luatexja-ruby
+*.ltjruby
+
+# makeidx
+*.idx
+*.ilg
+*.ind
+
+# minitoc
+*.maf
+*.mlf
+*.mlt
+*.mtc[0-9]*
+*.slf[0-9]*
+*.slt[0-9]*
+*.stc[0-9]*
+
+# minted
+_minted*
+*.pyg
+
+# morewrites
+*.mw
+
+# nomencl
+*.nlg
+*.nlo
+*.nls
+
+# pax
+*.pax
+
+# pdfpcnotes
+*.pdfpc
+
+# sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+
+# scrwfile
+*.wrt
+
+# sympy
+*.sout
+*.sympy
+sympy-plots-for-*.tex/
+
+# pdfcomment
+*.upa
+*.upb
+
+# pythontex
+*.pytxcode
+pythontex-files-*/
+
+# tcolorbox
+*.listing
+
+# thmtools
+*.loe
+
+# TikZ & PGF
+*.auxlock
+*.eledsec[0-9]*R
+*.eledsec[0-9]*
+
+# titletoc
+*.ptc
+
+# todonotes
+*.tdo
+
+# vhistory
+*.hst
+*.ver
+
+# easy-todo
+*.lod
+
+# xcolor
+*.xcp
+
+# xmpincl
+*.xmpi
+
+# xindy
+*.xdy
+
+# xypic precompiled matrices and outlines
+*.xyc
+*.xyd
+
+# endfloat
+*.ttt
+*.fff
+
+# Latexian
+TSWLatexianTemp*
+
+# todonotes
+*.figulist
+
+# achemso
+*.jaw
+
+# algorithm2e
+*.loa
+
+# anonchap
+*.jou
+
+# appendixnumberbeamer
+*.nav
+
+# bibtopic
+*.btp
+
+# ccaption
+*.cap
+
+# changes
+*.soc
+
+# comment
+*.cut
+
+# cprotect
+*.cpt
+
+# elsarticle (documentclass of Elsevier journals)
+*.spl
+
+# endnotes
+*.ent
+
+# fixme
+*.lox
+
+# feynmf/feynmp
+*.mf
+*.mp
+*.t[1-9]
+*.t[1-9][0-9]
+*.tfm
+
+# floating figures
+*.fff
+*.lof
+*.lot
+*.ttt
+
+# foilhtml
+*.latex
+
+# glossaries
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.lzo
+*.lzs
+
+# hyperref
+*.out
+
+# hypdvips
+*.hd
+
+# lilyglyphs
+*.lyluatex
+
+# listingsutf8
+*.lol
+
+# ltxtable
+*.lxt
+
+# lua
+*.fls
+*.fdb_latexmk
+
+# multirow
+*.mar
+
+# nomencl
+*.nlg
+*.nlo
+*.nls
+
+# ocgx2
+*.figlist
+*.ocgx2
+
+# pax
+*.pax
+
+# pdfPages
+*.fls
+*.fdb_latexmk
+
+# pgfplots
+*.makefile
+
+# pythontex
+*.pytxcode
+pythontex-files-*/
+
+# rerunfilecheck
+*.eledsec[0-9]*R
+*.eledsec[0-9]*
+
+# rcs
+*.rcs
+
+# revtex
+*.rtx
+
+# sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+
+# SyncTeX
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+
+# tablestyles
+*.sta
+
+# TikZ & PGF
+*.eledsec[0-9]*R
+*.eledsec[0-9]*
+
+# titletoc
+*.ptc
+
+# todonotes
+*.figulist
+*.tdo
+
+# vhistory
+*.hst
+*.ver
+
+# xindy
+*.xdy
+
+# xypic precompiled matrices
+*.xyc
+
+# YHMath
+*.yh
+
+# Build files
+*.pdf
+*.dvi
+*.ps
+
+# Minted cache
+_minted-*
+
+# Data files (adjust as needed)
+*.data.minted
+
+# Equation files
+*.equ
+
+# Temp files
+*~
+*.tmp
+*.temp

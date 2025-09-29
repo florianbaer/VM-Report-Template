@@ -1,6 +1,13 @@
-% Note: Personal information now configured in config.tex
-% This file contains only layout and formatting settings
+% ========================================
+% Environment Style Package
+% ========================================
+% Layout and formatting settings for the thesis template
+% Personal information is now configured in config.tex
 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{environment}[2024/01/01 Environment Style Package]
+
+% Acronym style
 \setacronymstyle{long-short}
 % Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
 \renewcommand{\arraystretch}{1.5}
@@ -16,3 +23,5 @@
 \cfoot{\thepage}
 
 \setcounter{tocdepth}{3}
+
+\endinput
