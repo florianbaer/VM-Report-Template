@@ -1,0 +1,16 @@
+# ChkTeX configuration for LaTeX VM Report Template
+# Simple configuration with only supported options
+
+# Tab size for proper indentation checking
+TabSize = 4
+
+# Disable common warnings for academic writing
+# -n1: Command terminated with space
+# -n8: Wrong length of dash
+# -n13: Intersentence spacing
+# -n18: Use ` or ' instead of proper quotes
+# -n44: User Regex
+CmdLine
+{
+    -n1 -n8 -n13 -n18 -n44
+}

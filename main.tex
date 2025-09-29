@@ -1,20 +1,33 @@
-\documentclass[11pt]{report}
-% compile with pdflatex deckball_bachelorarbeit.tex
-% eingesetzte packages
-% PDF/A Compliance
-\usepackage[a-2b,latxmp]{pdfx}
-% add unicode support and use english as language
-\usepackage[utf8]{inputenc}
+\documentclass[11pt,a4paper,oneside]{report}
+
+% ========================================
+% Modern LaTeX packages and configuration
+% ========================================
+ 
+% PDF/A Compliance (temporarily disabled due to missing dependencies)
+% \usepackage[a-2b,latxmp]{pdfx}
+
+% Modern font handling and encoding
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}          % Latin Modern fonts (improved Computer Modern)
+\usepackage{microtype}        % Improved typography and spacing
+
+% Language support
 \usepackage[english]{babel}
 
-\usepackage{amssymb} 
-\usepackage{color}
+% Modern color package (replaces color)
+\usepackage{xcolor}
+
+% Math packages
+\usepackage{amsmath,amssymb,amsthm}
+% Page layout
 \usepackage[a4paper,bindingoffset=0.2in,%
             left=2.35cm,right=2.12cm,top=2.75cm,bottom=2.2cm,%
             footskip=.25in]{geometry}
-\usepackage[T1]{fontenc}
-% code
+
+% Code highlighting (requires -shell-escape)
 \usepackage{minted}
+\usepackage{listings}         % Alternative code listings
 
 % set spacing for before and after chapters
 \usepackage{titlesec}
@@ -24,48 +37,42 @@
 % this alters "before" spacing (the second length argument) to 0
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-% tables over multiple pages
-\usepackage{longtable}
-% use images
+% Graphics and figures
 \usepackage{graphicx}
-\usepackage{nameref}
-\usepackage{caption}
 \usepackage{float}
-\usepackage{hyperref}
+\usepackage{caption}          % Enhanced captions
+\usepackage{pdfpages}         % Include PDF pages
+\usepackage{pdflscape}        % Single page landscape
+\usepackage{lscape}           % Landscape pages
 
-% itemize in table
-\usepackage{array}
-% style of header and footer
+% Tables and arrays
+\usepackage{array}            % Enhanced table formatting
+\usepackage{multirow}         % Multiple rows in tables
+\usepackage{longtable}        % Tables over multiple pages
+
+% Headers and footers
 \usepackage{fancyhdr}
-% Include pdf pages
-\usepackage{pdfpages}
-% Seitenorientierung
-\usepackage{pdflscape}
-% Abkürzungsverzeichnis
+
+% Glossaries and acronyms
 \usepackage[acronym]{glossaries}
 %\makeglossaries
 \input{include/glossary}
-% Einbindung von Code
-\usepackage{listings}
-% multiple rows in a table
-\usepackage{multirow}
-% Literaty index
-\usepackage{csquotes}% Recommended
+% Bibliography and citations (modern approach)
+\usepackage{csquotes}         % Recommended for proper quotation handling
 \usepackage[
-style=apa,
-backend=biber,
-hyperref=true,
-citereset=chapter,
-maxcitenames=3
+  style=apa,
+  backend=biber,
+  hyperref=true,
+  citereset=chapter,
+  maxcitenames=3,
+  sorting=nyt,
+  isbn=false
 ]{biblatex}
 \addbibresource{bibliography.bib}
-% Single-page landscape
-\usepackage{lscape}
 % Algorithms
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-% List of equations
-\usepackage{amsmath}
+% List of equations (amsmath already loaded)
 \usepackage{tocloft}
 \newcommand{\listequationsname}{List of Equations}
 \newlistof{myequations}{equ}{\listequationsname}
@@ -74,10 +81,26 @@ maxcitenames=3
 \setlength{\cftmyequationsnumwidth}{2.3em}
 \setlength{\cftmyequationsindent}{1.5em}
 
-\usepackage{caption}
+% Enhanced subfigures (caption already loaded above)
 \usepackage{subcaption}
 
-\input{environment.sty}
+% Hyperlinks (load near end to avoid conflicts)
+\usepackage[
+  colorlinks=true,
+  allcolors=black,
+  pdfpagemode=UseOutlines,
+  bookmarksopen=true,
+  bookmarksnumbered=true
+]{hyperref}
+\usepackage{bookmark}         % Enhanced bookmarks
+
+% Load configuration and custom styling
+\input{config.tex}
+\makeatletter
+\def\input@path{{}{styles/}}
+\makeatother
+\usepackage{thesis-style}
+\usepackage{environment}
 
 
 \begin{document}

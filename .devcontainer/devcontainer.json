@@ -1,0 +1,160 @@
+{
+	"name": "LaTeX VM Report Template",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"workspaceFolder": "/workspaces/VM-Report-Template",
+	"remoteUser": "vscode",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"james-yu.latex-workshop",
+				"eamodio.gitlens",
+				"shardulm94.trailing-spaces",
+				"stkb.rewrap",
+				"vscode-icons-team.vscode-icons",
+				"streetsidesoftware.code-spell-checker"
+			],
+			"settings": {
+				"latex-workshop.latex.outDir": "build",
+				"latex-workshop.latex.autoClean.run": "onBuilt",
+				"latex-workshop.latex.clean.method": "glob",
+				"latex-workshop.latex.autoBuild.run": "onSave",
+				"editor.formatOnSave": true,
+				"latex-workshop.linting.run": "onType",
+				"latex-workshop.formatting.latex": "latexindent",
+				"latex-workshop.linting.chktex.enabled": true,
+				"latex-workshop.view.pdf.viewer": "tab",
+				"latex-workshop.latex.outDir": "./build",
+				"files.associations": {
+					"*.tex": "latex"
+				},
+				"latex-workshop.formatting.latexindent.path": "latexindent",
+				"latex-workshop.view.pdf.external.synctex.args": [
+					"-forward-search",
+					"%TEX%",
+					"%LINE%",
+					"-reuse-instance",
+					"%PDF%"
+				],
+				"latex-workshop.synctex.afterBuild.enabled": true,
+				"latex-workshop.latex.rootFile.useSubFile": true,
+				"latex-workshop.view.pdf.zoom": "page-fit",
+				"latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e1e",
+				"latex-workshop.latex.recipe.default": "latexmk",
+				"latex-workshop.docker.enabled": false,
+				"latex-workshop.latex.recipes": [
+					{
+						"name": "latexmk",
+						"tools": [
+							"latexmk"
+						]
+					},
+					{
+						"name": "pdflatex_biber",
+						"tools": [
+							"pdflatex-thesis",
+							"biber",
+							"pdflatex-thesis",
+							"pdflatex-thesis"
+						]
+					},
+					{
+						"name": "pdflatex (thesis.pdf)",
+						"tools": [
+							"pdflatex-thesis"
+						]
+					}
+				],
+				"latex-workshop.latex.tools": [
+					{
+						"name": "latexmk",
+						"command": "latexmk",
+						"args": [
+							"-synctex=1",
+							"-interaction=nonstopmode",
+							"-file-line-error",
+							"-pdf",
+							"-shell-escape",
+							"-output-directory=build",
+							"%DOC%"
+						],
+						"env": {}
+					},
+					{
+						"name": "pdflatex",
+						"command": "pdflatex",
+						"args": [
+							"-synctex=1",
+							"-interaction=nonstopmode",
+							"-file-line-error",
+							"-shell-escape",
+							"-output-directory=build",
+							"%DOC%"
+						]
+					},
+					{
+						"name": "biber",
+						"command": "biber",
+						"args": [
+							"%DOCFILE%"
+						]
+					}
+				],
+				"latex-workshop.latex.clean.fileTypes": [
+					"*.aux",
+					"*.bbl",
+					"*.blg",
+					"*.idx",
+					"*.ind",
+					"*.lof",
+					"*.lot",
+					"*.out",
+					"*.toc",
+					"*.acn",
+					"*.acr",
+					"*.alg",
+					"*.glg",
+					"*.glo",
+					"*.gls",
+					"*.fls",
+					"*.log",
+					"*.fdb_latexmk",
+					"*.snm",
+					"*.synctex(busy)",
+					"*.synctex.gz(busy)",
+					"*.nav",
+					"*.bcf",
+					"*.run.xml"
+				],
+				"latex-workshop.texcount.autorun": "onSave",
+				"latex-workshop.view.pdf.useBuildDir": true
+			}
+		}
+	},
+	"mounts": [
+		{
+			"source": "${localEnv:HOME}${localEnv:USERPROFILE}/.ssh",
+			"target": "/home/vscode/.ssh",
+			"type": "bind"
+		}
+	],
+	"containerEnv": {
+		"SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
+	},
+	"postCreateCommand": "sudo chmod 700 /home/vscode/.ssh && sudo chmod -f 600 /home/vscode/.ssh/* 2>/dev/null || true && sudo chown -R vscode:vscode /home/vscode/.ssh",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"username": "vscode",
+			"uid": "1000",
+			"gid": "1000"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		}
+	}
+}

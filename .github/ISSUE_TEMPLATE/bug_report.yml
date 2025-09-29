@@ -1,0 +1,79 @@
+name: Bug Report
+description: File a bug report to help us improve the LaTeX template
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - florianbaer
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Describe the issue you encountered
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: What environment are you using?
+      options:
+        - VS Code with Dev Container
+        - VS Code with local LaTeX installation
+        - Other (please specify in description)
+    validations:
+      required: true
+  - type: input
+    id: vscode-version
+    attributes:
+      label: VS Code Version
+      description: What version of VS Code are you using?
+      placeholder: ex. 1.84.2
+    validations:
+      required: false
+  - type: input
+    id: latex-workshop-version
+    attributes:
+      label: LaTeX Workshop Extension Version
+      description: What version of the LaTeX Workshop extension are you using?
+      placeholder: ex. v9.15.0
+    validations:
+      required: false
+  - type: textarea
+    id: latex-output
+    attributes:
+      label: LaTeX Compilation Output
+      description: Please copy and paste any relevant LaTeX compilation errors or output
+      render: shell
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Please provide step-by-step instructions to reproduce the issue
+      placeholder: |
+        1. Open the template in VS Code
+        2. Compile the document
+        3. See error...
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

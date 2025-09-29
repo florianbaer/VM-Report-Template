@@ -1,22 +1,13 @@
-\newcommand{\authorname}{\textcolor{red}{\textsc{Your Name}}}
-\newcommand{\authorcity}{\textcolor{red}{\textsc{YOUR CITY}}}
-\newcommand{\thesisname}{\textbf{\textcolor{red}{THESIS NAME}}}
-\newcommand{\kindofthesis}{\textcolor{red}{Kind of project}}
-\newcommand{\advisorname}{\textcolor{red}{ADVISOR NAME}}
-\newcommand{\advisormail}{\textcolor{red}{name.name@company.com}}
-\newcommand{\advisoraffiliation}{\textcolor{red}{Lucerne University of Applied Sciences and Arts, 6343 Rotkreuz, Switzerland}}
-\newcommand{\coadvisorname}{\textcolor{red}{CO-ADVISOR NAME}}
-\newcommand{\coadvisormail}{\textcolor{red}{name.name@company.com}}
-\newcommand{\coadvisoraffiliation}{\textcolor{red}{Lucerne University of Applied Sciences and Arts, 6343 Rotkreuz, Switzerland}}
-\newcommand{\expertname}{\textcolor{red}{EXPERT NAME}}
-\newcommand{\expertmail}{\textcolor{red}{name.name@company.com}}
-\newcommand{\expertaffiliation}{\textcolor{red}{Lucerne University of Applied Sciences and Arts, 6343 Rotkreuz, Switzerland}}
-\newcommand{\titlename}{\textcolor{red}{Master of Science in Engineering}}
-\newcommand{\presented}{presented by}
-\newcommand{\schoolname}{\textcolor{red}{Lucerne School of Computer Science and Information Technology\\
-Lucerne University of Applied Sciences and Arts\\
-6343 Rotkreuz, Switzerland}}
+% ========================================
+% Environment Style Package
+% ========================================
+% Layout and formatting settings for the thesis template
+% Personal information is now configured in config.tex
 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{environment}[2024/01/01 Environment Style Package]
+
+% Acronym style
 \setacronymstyle{long-short}
 % Anpassung an Höhe einer Tabellenreihe: Faktor 1.5
 \renewcommand{\arraystretch}{1.5}
@@ -32,3 +23,5 @@ Lucerne University of Applied Sciences and Arts\\
 \cfoot{\thepage}
 
 \setcounter{tocdepth}{3}
+
+\endinput
