@@ -1,0 +1,73 @@
+% ========================================
+% Template Configuration File
+% ========================================
+% Fill in your details below. This file will be automatically loaded by main.tex
+% Remove \textcolor{red}{} and replace with your actual information
+
+% Author Information
+\newcommand{\authorname}{Your Name}
+\newcommand{\authorcity}{Your City}
+\newcommand{\authorstudentid}{Your Student ID}
+
+% Thesis Information
+\newcommand{\thesisname}{Your Thesis Title}
+\newcommand{\kindofthesis}{Master Thesis} % e.g., Bachelor Thesis, Master Thesis, Semester Project
+\newcommand{\titlename}{Master of Science in Engineering}
+
+% Institution Information
+\newcommand{\schoolname}{Lucerne School of Computer Science and Information Technology\\
+Lucerne University of Applied Sciences and Arts\\
+6343 Rotkreuz, Switzerland}
+
+% Supervision Team
+\newcommand{\advisorname}{Advisor Name}
+\newcommand{\advisormail}{advisor@university.com}
+\newcommand{\advisoraffiliation}{Lucerne University of Applied Sciences and Arts, 6343 Rotkreuz, Switzerland}
+
+\newcommand{\coadvisorname}{Co-Advisor Name}
+\newcommand{\coadvisormail}{coadvisor@university.com}
+\newcommand{\coadvisoraffiliation}{Lucerne University of Applied Sciences and Arts, 6343 Rotkreuz, Switzerland}
+
+\newcommand{\expertname}{Expert Name}
+\newcommand{\expertmail}{expert@company.com}
+\newcommand{\expertaffiliation}{Company Name, Address}
+
+% Template Settings
+\newcommand{\presented}{presented by}
+
+% Conditional formatting for missing values
+\usepackage{xstring}
+\newcommand{\configcheck}[1]{%
+  \IfStrEq{#1}{Your Name}{\textcolor{red}{\textsc{#1}}}%
+  {\IfStrEq{#1}{Your City}{\textcolor{red}{\textsc{#1}}}%
+    {\IfStrEq{#1}{Your Thesis Title}{\textcolor{red}{\textbf{#1}}}%
+      {\IfStrEq{#1}{Advisor Name}{\textcolor{red}{#1}}%
+        {\IfStrEq{#1}{advisor@university.com}{\textcolor{red}{#1}}%
+          {#1}%
+        }%
+      }%
+    }%
+  }%
+}
+
+% Override commands to use configcheck
+\renewcommand{\authorname}{\configcheck{\@authorname}}
+\renewcommand{\authorcity}{\configcheck{\@authorcity}}
+\renewcommand{\thesisname}{\configcheck{\@thesisname}}
+\renewcommand{\advisorname}{\configcheck{\@advisorname}}
+\renewcommand{\advisormail}{\configcheck{\@advisormail}}
+\renewcommand{\coadvisorname}{\configcheck{\@coadvisorname}}
+\renewcommand{\coadvisormail}{\configcheck{\@coadvisormail}}
+\renewcommand{\expertname}{\configcheck{\@expertname}}
+\renewcommand{\expertmail}{\configcheck{\@expertmail}}
+
+% Store the original values
+\newcommand{\@authorname}{Your Name}
+\newcommand{\@authorcity}{Your City}
+\newcommand{\@thesisname}{Your Thesis Title}
+\newcommand{\@advisorname}{Advisor Name}
+\newcommand{\@advisormail}{advisor@university.com}
+\newcommand{\@coadvisorname}{Co-Advisor Name}
+\newcommand{\@coadvisormail}{coadvisor@university.com}
+\newcommand{\@expertname}{Expert Name}
+\newcommand{\@expertmail}{expert@company.com}
