@@ -40,9 +40,15 @@
 				"latex-workshop.latex.rootFile.useSubFile": true,
 				"latex-workshop.view.pdf.zoom": "page-fit",
 				"latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e1e",
-				"latex-workshop.latex.recipe.default": "pdflatex_biber",
+				"latex-workshop.latex.recipe.default": "latexmk",
 				"latex-workshop.docker.enabled": false,
 				"latex-workshop.latex.recipes": [
+					{
+						"name": "latexmk",
+						"tools": [
+							"latexmk"
+						]
+					},
 					{
 						"name": "pdflatex_biber",
 						"tools": [
@@ -60,6 +66,16 @@
 					}
 				],
 				"latex-workshop.latex.tools": [
+					{
+						"name": "latexmk",
+						"command": "latexmk",
+						"args": [
+							"-pdf",
+							"-interaction=nonstopmode",
+							"-synctex=1",
+							"%DOC%"
+						]
+					},
 					{
 						"name": "pdflatex",
 						"command": "pdflatex",

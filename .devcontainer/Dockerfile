@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     ca-certificates \
     python3 \
-    python3-pygments \
     python3-pip \
     make \
     chktex \
@@ -28,10 +27,10 @@ RUN if [ -x /bin/bash ] && [ ! -e /bin/sh ]; then ln -sf /bin/bash /bin/sh; fi
 RUN git config --global user.name "Dev Container User" \
     && git config --global init.defaultBranch main
 
-# Ensure Pygments is properly installed for minted syntax highlighting
+# Ensure Pygments is available for minted syntax highlighting
 # The minted package requires pygmentize executable to highlight code blocks
-# Use --break-system-packages to override externally-managed-environment restriction
-RUN pip3 install --upgrade pygments --break-system-packages
+# System version is adequate, skip upgrade to avoid conflicts
+RUN which pygmentize || pip3 install pygments --break-system-packages
 
 # Install additional TeX Live packages needed for thesis template
 RUN tlmgr update --self
@@ -64,7 +63,7 @@ RUN tlmgr install subcaption || true
 RUN tlmgr install hyperref || true
 
 # Essential collections to avoid missing individual packages
-RUN tlmgr install collection-latexextra || true          # Extra LaTeX packages (includes titlesec, etc.)
+# RUN tlmgr install collection-latexextra || true          # Extra LaTeX packages (includes titlesec, etc.)
 
 # Optional packages (uncomment lines below if needed):
 # RUN tlmgr install collection-fontsrecommended || true    # Additional fonts
