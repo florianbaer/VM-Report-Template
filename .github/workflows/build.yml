@@ -23,6 +23,7 @@ jobs:
             --user root \
             texlive/texlive:latest-small \
             bash -c "
+              export PATH=/usr/local/texlive/2025/bin/x86_64-linux:\$PATH && \
               apt-get update && \
               apt-get install -y --no-install-recommends python3 python3-pip make && \
               tlmgr update --self && \
