@@ -5,6 +5,7 @@ FROM texlive/texlive:latest-small
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     git \
+    pre-commit \
     sudo \
     curl \
     ca-certificates \
