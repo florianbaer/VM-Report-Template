@@ -5,6 +5,7 @@ FROM texlive/texlive:latest-small
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     git \
+    pre-commit \
     sudo \
     curl \
     ca-certificates \
@@ -39,31 +40,8 @@ ENV PATH="/usr/local/texlive/2025/bin/aarch64-linux:${PATH}"
 RUN tlmgr update --self
 
 # Install packages individually to handle failures gracefully
-RUN tlmgr install biber || true
-RUN tlmgr install latexmk || true
-RUN tlmgr install latexindent || true
-RUN tlmgr install pdfx || true
-RUN tlmgr install xmpincl || true
-RUN tlmgr install titlesec || true
-RUN tlmgr install multirow || true
-RUN tlmgr install microtype || true
-RUN tlmgr install csquotes || true
-RUN tlmgr install biblatex || true
-RUN tlmgr install biblatex-apa || true
-RUN tlmgr install minted || true
-RUN tlmgr install fvextra || true
-RUN tlmgr install fancyvrb || true
-RUN tlmgr install glossaries || true
-RUN tlmgr install glossaries-english || true
-RUN tlmgr install algpseudocode || true
-RUN tlmgr install algorithmicx || true
-RUN tlmgr install algorithms || true
-RUN tlmgr install tocloft || true
-RUN tlmgr install xstring || true
-RUN tlmgr install texcount || true
-RUN tlmgr install caption || true
-RUN tlmgr install subcaption || true
-RUN tlmgr install hyperref || true
+# Note: algpseudocode is part of algorithmicx, subcaption is in collection-latexextra
+RUN tlmgr install pdfx biber latexmk latexindent xmpincl titlesec multirow microtype csquotes biblatex biblatex-apa minted fvextra fancyvrb glossaries glossaries-english algorithmicx algorithms tocloft xstring texcount caption hyperref; exit 0
 
 # Essential collections to avoid missing individual packages
 # RUN tlmgr install collection-latexextra || true          # Extra LaTeX packages (includes titlesec, etc.)

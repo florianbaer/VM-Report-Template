@@ -26,7 +26,6 @@
 				"latex-workshop.formatting.latex": "latexindent",
 				"latex-workshop.linting.chktex.enabled": true,
 				"latex-workshop.view.pdf.viewer": "tab",
-				"latex-workshop.latex.outDir": "./build",
 				"files.associations": {
 					"*.tex": "latex"
 				},
@@ -143,7 +142,7 @@
 	"containerEnv": {
 		"SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
 	},
-	"postCreateCommand": "sudo chmod 700 /home/vscode/.ssh && sudo chmod -f 600 /home/vscode/.ssh/* 2>/dev/null || true && sudo chown -R vscode:vscode /home/vscode/.ssh",
+	"postCreateCommand": "bash .devcontainer/postCreate.sh",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": true,

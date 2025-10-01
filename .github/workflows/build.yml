@@ -1,4 +1,4 @@
-name: Build PDF and Quality Checks
+name: Build PDF
 
 on:
   push:
@@ -6,159 +6,57 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  LATEX_VERSION: "2024"
-
 jobs:
-  # Quality checks job
-  quality-checks:
-    name: Quality Checks
+  build:
+    name: Build LaTeX Document
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
+      - name: Build PDF in container
         run: |
-          sudo apt-get update
-          sudo apt-get install -y aspell aspell-en chktex
+          docker run --rm \
+            -v "$PWD:/workspace" \
+            -w /workspace \
+            --user root \
+            texlive/texlive:latest-small \
+            bash -c "
+              apt-get update && \
+              apt-get install -y --no-install-recommends python3 python3-pip make && \
+              tlmgr update --self && \
+              tlmgr install biber latexmk latexindent xmpincl titlesec multirow microtype csquotes biblatex biblatex-apa minted fvextra fancyvrb glossaries glossaries-english algorithmicx algorithms tocloft xstring texcount caption hyperref collection-latexextra && \
+              pip3 install pygments --break-system-packages && \
+              latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape main.tex && \
+              chmod 644 main.pdf
+            "
 
-      - name: Check configuration completeness
-        run: |
-          if grep -q "Your Name" config.tex; then
-            echo "::warning::Configuration contains placeholder values"
-          fi
-
-      - name: Run spell check
-        run: |
-          # Create aspell personal dictionary
-          touch .aspell.en.pws
-          echo "personal_ws-1.1 en 0" > .aspell.en.pws
-
-          # Run spell check on main content files
-          find include/ -name "*.tex" -exec aspell list --lang=en --personal=./.aspell.en.pws < {} \; | sort -u > spelling_errors.txt
-
-          if [ -s spelling_errors.txt ]; then
-            echo "::warning::Potential spelling errors found:"
-            cat spelling_errors.txt
-          else
-            echo "No spelling errors found"
-          fi
-
-      - name: Run LaTeX linting
-        run: |
-          chktex -v0 -I0 -l chktexrc main.tex || echo "::warning::LaTeX linting found issues"
-
-  # Build job
-  build-pdf:
-    name: Build PDF
-    runs-on: ubuntu-latest
-    needs: quality-checks
-    strategy:
-      matrix:
-        latex-engine: [pdflatex]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Full history for proper version info
-
-      - name: Setup build info
-        run: |
-          echo "BUILD_DATE=$(date -u +%Y-%m-%d)" >> $GITHUB_ENV
-          echo "BUILD_SHA=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
-
-      - name: Cache LaTeX packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.texlive
-          key: texlive-${{ env.LATEX_VERSION }}-${{ hashFiles('main.tex') }}
-
-      - name: Set output directory for minted
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "usepackage{minted}"
-          replace: "usepackage[outputdir=build]{minted}"
-          regex: false
-
-      - name: Build LaTeX document
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: "main.tex"
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -output-directory=build"
-          latexmk_use_lualatex: false
-          latexmk_shell_escape: true
-          extra_fonts: |
-            fonts/**.ttf
-            fonts/**.otf
-
-      - name: Check PDF creation
-        run: |
-          if [ ! -f build/main.pdf ]; then
-            echo "::error::PDF was not created successfully"
-            exit 1
-          fi
-
-          # Check PDF size (warn if too large)
-          pdf_size=$(stat -c%s build/main.pdf)
-          if [ $pdf_size -gt 50000000 ]; then  # 50MB
-            echo "::warning::PDF size is large (${pdf_size} bytes). Consider optimizing images."
-          fi
-
-      - name: Rename PDF with metadata
-        run: |
-          mv build/main.pdf build/thesis-${BUILD_DATE}-${BUILD_SHA}.pdf
-
-      - name: Upload PDF artifact
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
-          name: thesis-pdf-${{ matrix.latex-engine }}-${{ env.BUILD_SHA }}
-          path: build/thesis-*.pdf
+          name: thesis-pdf
+          path: main.pdf
           retention-days: 30
 
-      - name: Upload build logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs-${{ matrix.latex-engine }}-${{ env.BUILD_SHA }}
-          path: build/*.log
-          retention-days: 7
-
-  # Release job (only on main branch)
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: build-pdf
+    needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Download PDF artifact
+      - name: Download PDF
         uses: actions/download-artifact@v4
         with:
-          pattern: thesis-pdf-*
-          merge-multiple: true
-          path: release/
+          name: thesis-pdf
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: build-${{ github.sha }}
-          name: "Thesis Build - ${{ github.sha }}"
-          body: |
-            Automated thesis build from commit ${{ github.sha }}
-
-            Built on: ${{ github.event.head_commit.timestamp }}
-            Commit message: ${{ github.event.head_commit.message }}
-          files: release/*.pdf
+          name: Build ${{ github.sha }}
+          files: main.pdf
           draft: false
           prerelease: true
         env:

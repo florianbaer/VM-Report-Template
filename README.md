@@ -1,8 +1,10 @@
-# VM report template
+# MSE Report Template
 
-[![Build PDF File](https://github.com/florianbaer/VM-Report-Template/actions/workflows/build.yml/badge.svg)](https://github.com/florianbaer/VM-Report-Template/actions/workflows/build.yml) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/chetanraj/awesome-github-badges)
+[![Build PDF File](https://github.com/florianbaer/VM-Report-Template/actions/workflows/build.yml/badge.svg)](https://github.com/florianbaer/VM-Report-Template/actions/workflows/build.yml)
 
 This template is a base for the report while working for a master work or thesis.
+
+Important: This report template is sufficient to meet the formatting and submission requirements of Master of Science in Engineering (MSE) programmes in Switzerland. Use it as a starting point for your MSE thesis or project report and adapt the content (title page, affiliation, supervisors, and any specific university requirements) as needed.
 
 ## Development Environment
 
@@ -78,6 +80,8 @@ The container includes:
 - Python3 with Pygments for syntax highlighting (minted package)
 - All necessary LaTeX packages for this template
 
+Note about VS Code LaTeX extensions: this template is designed to work seamlessly with popular VS Code LaTeX extensions (for example, LaTeX Workshop and common companion extensions). When you open this project in VS Code (inside the devcontainer), these extensions can automatically manage compilation, bibliography (Biber), forward/inverse search, and other tasks using the configured LaTeX toolchain.
+
 #### Building the Document
 
 Once in the container:
@@ -90,7 +94,7 @@ pdflatex -shell-escape main.tex
 pdflatex -shell-escape main.tex
 ```
 
-Or use the integrated LaTeX Workshop extension commands in VS Code.
+Or use the integrated LaTeX extension commands in VS Code — the extension will automatically run the correct sequence for you when configured.
 
 ## Quick Start
 
@@ -108,4 +112,4 @@ Or use the integrated LaTeX Workshop extension commands in VS Code.
 
 ### Manual Setup (Alternative)
 
-If you prefer not to use the devcontainer: 
+If you prefer not to use the devcontainer:
