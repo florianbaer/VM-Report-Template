@@ -80,13 +80,6 @@ jobs:
           path: ~/.texlive
           key: texlive-${{ env.LATEX_VERSION }}-${{ hashFiles('main.tex') }}
 
-      - name: Set output directory for minted
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "usepackage{minted}"
-          replace: "usepackage[outputdir=build]{minted}"
-          regex: false
-
       - name: Build LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
